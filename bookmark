@@ -25,7 +25,7 @@ havecmd() {
 }
 
 set -e
-havecmd todo.sh 'This is a thin wrapper around todo.txt, see https://github.com/todotxt/todo.txt-cli'
+havecmd todo.sh 'This requires todo.sh, see https://github.com/todotxt/todo.txt-cli'
 set +e
 
 default_config() {

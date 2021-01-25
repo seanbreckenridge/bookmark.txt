@@ -10,6 +10,6 @@ It maintains a separate config file to `todo.txt`, at `/home/sean/.config/bookma
 
 ### Install
 
-To install, copy `bookmark` onto your `$PATH` somewhere. To automate:
+To install, copy the `bookmark` script onto your `$PATH` somewhere. To automate:
 
 `sh <(curl -sSL http://git.io/sinister) -u 'https://raw.githubusercontent.com/seanbreckenridge/bookmark.txt/master/bookmark'`
