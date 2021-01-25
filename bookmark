@@ -1,0 +1,62 @@
+#!/bin/bash
+# Template from https://github.com/seanbreckenridge/havecmd
+
+# get the name of this script
+declare script_name
+script_name='bookmark'
+
+# function to verify an external command is installed
+havecmd() {
+	local BINARY ERRMSG
+	# error if first argument isn't provided
+	BINARY="${1:?Must provide command to check}"
+	# the commend exists, exit with 0 (success!)
+	if command -v "${BINARY}" >/dev/null 2>&1; then
+		return 0
+	else
+		# construct error message
+		ERRMSG="'${script_name}' requires '${BINARY}', could not find that on your \$PATH"
+		if [[ -n "$2" ]]; then
+			ERRMSG="${ERRMSG}. $2"
+		fi
+		printf '%s\n' "${ERRMSG}" 1>&2
+		return 1
+	fi
+}
+
+set -e
+havecmd todo.sh 'This is a thin wrapper around todo.txt, see https://github.com/todotxt/todo.txt-cli'
+set +e
+
+default_config() {
+	cat <<EOF
+# === EDIT FILE LOCATIONS BELOW ===
+
+# Note: This is a bash script, its sourced when todo.sh runs
+# Your bookmark.txt directory (this should be an absolute path)
+export TODO_DIR="\$HOME/.config/bookmark.txt"
+
+# Your bookmark/removed/report.txt locations
+export TODO_FILE="\$TODO_DIR/bookmarks.txt"
+export DONE_FILE="\$TODO_DIR/done.txt"
+export REPORT_FILE="\$TODO_DIR/report.txt"
+EOF
+}
+
+declare BOOKMARK_CONFIG_DIR BOOKMARK_CONFIG_FILE
+BOOKMARK_CONFIG_DIR="${BOOKMARK_CONFIG_DIR:-${HOME}/.config/bookmark.txt}"
+BOOKMARK_CONFIG_FILE="${BOOKMARK_CONFIG_DIR}/config"
+readonly BOOKMARK_CONFIG_DIR BOOKMARK_CONFIG_FILE
+
+setup_config() {
+	if [[ ! -d "${BOOKMARK_CONFIG_DIR}" ]]; then
+		mkdir -vp "${BOOKMARK_CONFIG_DIR}"
+	fi
+	if [[ ! -e "${BOOKMARK_CONFIG_FILE}" ]]; then
+		default_config >"${BOOKMARK_CONFIG_FILE}"
+		printf 'Setup default config file, edit "%s" to edit file locations\n' "${BOOKMARK_CONFIG_FILE}"
+	fi
+}
+
+setup_config
+exec todo.sh -d "${BOOKMARK_CONFIG_FILE}" "$@"
