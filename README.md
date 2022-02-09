@@ -20,9 +20,8 @@ BOOKMARKS: 1 of 3 tasks shown
 ```
 
 - its easy to create scripts on top of this since the data format is just a text file:
-
-- [prompt](https://sean.fish/d/todo-prompt) - uses `rofi` to prompt me to add/mark bookmarks as 'done' (remove them)
-- [open](https://sean.fish/d/bookmark-open) - uses `rofi` and [`urlextract`](https://pypi.org/project/urlextract/) on the selected bookmark, to open it in my browser
+  - [prompt](https://sean.fish/d/todo-prompt) - uses `rofi` to prompt me to add/mark bookmarks as 'done' (remove them)
+  - [open](https://sean.fish/d/bookmark-open) - uses `rofi` and [`urlextract`](https://pypi.org/project/urlextract/) on the selected bookmark, to open it in my browser
 
 ### Install
 
