@@ -25,6 +25,10 @@ BOOKMARKS: 1 of 3 tasks shown
 
 ### Install
 
-To install, copy the `bookmark` script onto your `$PATH` somewhere. To automate:
+To install, copy the `bookmark` script onto your `$PATH` somewhere
 
-`sh <(curl -sSL http://git.io/sinister) -u 'https://raw.githubusercontent.com/seanbreckenridge/bookmark.txt/master/bookmark'`
+Could use [`basher`](https://github.com/basherpm/basher) to do that for you:
+
+```bash
+basher install seanbreckenridge/bookmark.txt
+```
