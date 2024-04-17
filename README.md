@@ -6,6 +6,8 @@ This is a thin wrapper around [`todo.txt`](https://github.com/todotxt/todo.txt-c
 
 It maintains a separate config file at `~/.config/bookmark.txt`. To change that, you can set the `BOOKMARK_CONFIG_DIR` environment variable and modify the generated config file.
 
+Should mention that this works perfectly fine if your todo configuration is very simple, but if you start adding [third party add-ons](https://git.sr.ht/~proycon/todotxt-more) for `todo.txt`, it can be annoying to sync config changes. I've since come up with a better solution for myself, see [managing multiple todo.txt files](https://sean.fish/x/blog/managing-multiple-todo-txts/)
+
 ### Usage
 
 Like todo.txt:
